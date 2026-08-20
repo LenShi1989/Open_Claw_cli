@@ -50,3 +50,12 @@
 | `/config`   | 查看設定                      |
 | `/quit`     | 離開目前 Agent                |
 | `/exit`     | 離開 Agent                    |
+
+# Ollama timeout
+
+300 秒 → 600 秒
+
+```sh
+openclaw config set models.providers.ollama.timeoutSeconds 600
+openclaw gateway restart
+```
