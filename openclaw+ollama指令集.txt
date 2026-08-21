@@ -1,0 +1,62 @@
+//**Ollama 相關**//
+
+//安裝 Ollama
+irm https://ollama.com/install.ps1 | iex
+ollama --version                          //確認 Ollama 版本
+ollama list                               //查看模型清單
+curl http://localhost:11434/api/tags      //測試 Ollama API
+ollama pull qwen3.5:9b                    //下載AI模型
+ollama run qwen3.5:9b                     //執行測試模型
+$env:OLLAMA_CONTEXT_LENGTH="65536"        //
+
+
+
+$env:OLLAMA_CONTEXT_LENGTH="65536"
+
+//--------------------------------------------------------------
+
+//**Openclaw Cli相關**//
+
+//安裝 OpenClaw
+iwr -useb https://openclaw.ai/install.ps1 | iex  
+
+openclaw --version             //查看 OpenClaw 版本
+openclaw --help                //查看說明
+openclaw config                //設定參數
+openclaw status                //查看目前 OpenClaw 狀態
+openclaw gateway status        //查看 Gateway 狀態
+openclaw gateway start         //啟動 Gateway
+openclaw gateway stop          //停止 Gateway
+openclaw gateway restart       //重啟 Gateway
+openclaw update                //更新 OpenClaw 
+openclaw agents add coding     //建立sub-agent, name為coding
+
+//設定timeout
+openclaw config set models.providers.ollama.timeoutSeconds 600
+
+//--------------------------------------------------------------
+
+//**openclaw內部指令**//
+/help       //顯示可用指令              
+/status     //查看目前 Agent / Session 狀態 
+/model      //查看或切換模型                
+/models     //查看可用模型                  
+/reset      //重置目前 Session              
+/clear      //清除目前對話內容              
+/new        //建立新的 Session              
+/sessions   //查看 Session                  
+/session    //查看目前 Session 資訊         
+/compact    //壓縮目前 Context              
+/context    //查看 Context 使用狀況         
+/usage      //查看 Token / 使用量           
+/think      //調整思考模式                  
+/verbose    //開／關詳細輸出                
+/debug      //開／關 Debug 資訊             
+/tools      //查看可用 Tools                
+/skills     //查看可用 Skills               
+/config     //查看設定                      
+/quit       //離開目前 Agent                
+/exit       //離開 Agent                    
+
+
+
