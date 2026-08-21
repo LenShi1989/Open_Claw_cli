@@ -10,7 +10,6 @@ ollama run qwen3.5:9b                     //執行測試模型
 $env:OLLAMA_CONTEXT_LENGTH="65536"        //設定ollama context長度
 docker exec -it ollama                    //docker 指令前綴
 
-
 //--------------------------------------------------------------
 
 //**Openclaw Cli相關**//
@@ -31,7 +30,6 @@ openclaw agents add coding     //建立sub-agent, name為coding
 openclaw doctor                //檢查／診斷問題
 openclaw logs --follow         //檢查及時log
 openclaw config validate       //驗證設定檔
-
 
 
 //設定timeout
@@ -61,5 +59,13 @@ openclaw config set models.providers.ollama.timeoutSeconds 600
 /quit       //離開目前 Agent                
 /exit       //離開 Agent                    
 
+//--------------------------------------------------------------
 
+//**openclaw 調整Context 長度**//
+
+cd "C:\Users\user\.openclaw\openclaw.json"
+調整 openclaw.json
+
+"contextWindow":32768      //調整約為33k
+"num_ctx":32768            //調整約為33k
 
