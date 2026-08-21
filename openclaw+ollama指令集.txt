@@ -8,7 +8,7 @@ curl http://localhost:11434/api/tags      //測試 Ollama API
 ollama pull qwen3.5:9b                    //下載AI模型
 ollama run qwen3.5:9b                     //執行測試模型
 $env:OLLAMA_CONTEXT_LENGTH="65536"        //設定ollama context長度
-
+docker exec -it ollama                    //docker 指令前綴
 
 
 //--------------------------------------------------------------
@@ -28,6 +28,11 @@ openclaw gateway stop          //停止 Gateway
 openclaw gateway restart       //重啟 Gateway
 openclaw update                //更新 OpenClaw 
 openclaw agents add coding     //建立sub-agent, name為coding
+openclaw doctor                //檢查／診斷問題
+openclaw logs --follow         //檢查及時log
+openclaw config validate       //驗證設定檔
+
+
 
 //設定timeout
 openclaw config set models.providers.ollama.timeoutSeconds 600
