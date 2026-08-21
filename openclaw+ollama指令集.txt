@@ -37,10 +37,11 @@ openclaw node restart          //重啟 Node Host
 openclaw nodes list            //檢查 Gateway 是否看到 Node
 openclaw nodes status          //檢查 Gateway 是否看到 Node
 openclaw devices list          //查看那些回應授權  
+openclaw nodes pending         //查看 nodes 暫停的檔案
+
+
 openclaw devices approve 104a56fb-0ab8-4542-8610-f94a26f96468  //允許授權
 openclaw nodes approve 5f76ddbb-fda7-4950-b990-85ff7c54d4fa    //允許授權
-
-
 
 
 //設定timeout
