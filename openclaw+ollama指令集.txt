@@ -17,27 +17,30 @@ docker exec -it ollama                    //docker 指令前綴
 //安裝 OpenClaw
 iwr -useb https://openclaw.ai/install.ps1 | iex  
 
-openclaw --version             //查看 OpenClaw 版本
-openclaw --help                //查看說明
-openclaw config                //設定參數
-openclaw status                //查看目前 OpenClaw 狀態
-openclaw gateway status        //查看 Gateway 狀態
-openclaw gateway start         //啟動 Gateway
-openclaw gateway stop          //停止 Gateway
-openclaw gateway restart       //重啟 Gateway
-openclaw update                //更新 OpenClaw 
-openclaw agents add coding     //建立sub-agent, name為coding
-openclaw doctor                //檢查／診斷問題
-openclaw logs --follow         //檢查及時log
-openclaw config validate       //驗證設定檔
-openclaw node status           //確認 Node Host 狀態
-openclaw node install          //安裝 Node Host
-openclaw node start            //啟動 Node Host
-openclaw node restart          //重啟 Node Host
-openclaw nodes list            //檢查 Gateway 是否看到 Node
-openclaw nodes status          //檢查 Gateway 是否看到 Node
-openclaw devices list          //查看那些回應授權  
-openclaw nodes pending         //查看 nodes 暫停的檔案
+openclaw --version                //查看 OpenClaw 版本
+openclaw --help                   //查看說明
+openclaw config                   //設定參數
+openclaw status                   //查看目前 OpenClaw 狀態
+openclaw gateway status           //查看 Gateway 狀態
+openclaw gateway start            //啟動 Gateway
+openclaw gateway stop             //停止 Gateway
+openclaw gateway restart          //重啟 Gateway
+openclaw update                   //更新 OpenClaw 
+openclaw agents add coding        //建立sub-agent, name為coding
+openclaw doctor                   //檢查／診斷問題
+openclaw logs --follow            //檢查及時log
+openclaw config validate          //驗證設定檔
+openclaw node status              //確認 Node Host 狀態
+openclaw node install             //安裝 Node Host
+openclaw node start               //啟動 Node Host
+openclaw node restart             //重啟 Node Host
+openclaw nodes list               //檢查 Gateway 是否看到 Node
+openclaw nodes status             //檢查 Gateway 是否看到 Node
+openclaw devices list             //查看那些回應授權  
+openclaw nodes pending            //查看 nodes 暫停的檔案
+openclaw skills list --verbose    //查看skills清單
+openclaw skills check             //確認skills
+
 
 
 openclaw devices approve 104a56fb-0ab8-4542-8610-f94a26f96468  //允許授權
