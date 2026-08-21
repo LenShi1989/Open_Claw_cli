@@ -7,11 +7,9 @@ ollama list                               //查看模型清單
 curl http://localhost:11434/api/tags      //測試 Ollama API
 ollama pull qwen3.5:9b                    //下載AI模型
 ollama run qwen3.5:9b                     //執行測試模型
-$env:OLLAMA_CONTEXT_LENGTH="65536"        //
+$env:OLLAMA_CONTEXT_LENGTH="65536"        //設定ollama context長度
 
 
-
-$env:OLLAMA_CONTEXT_LENGTH="65536"
 
 //--------------------------------------------------------------
 
