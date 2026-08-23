@@ -44,9 +44,13 @@ openclaw skills check             //確認skills
 openclaw models list              //查看現在的AI模型
 openclaw models status            //查看AI模型狀態
 
-openclaw models list --provider ollama     //查看 Ollama 
-openclaw models set ollama/qwen3.5:9b      //設定主要模型
-openclaw models list --provider ollama     //確認模型
+openclaw config get agents.defaults.workspace              //查看目前工作區
+openclaw config set agents.defaults.workspace "路徑"       //設定工作路徑
+openclaw setup --workspace "路徑"                          //初始化工作區
+openclaw config validate                                   //驗證設定
+openclaw models list --provider ollama                     //查看 Ollama 
+openclaw models set ollama/qwen3.5:9b                      //設定主要模型
+openclaw models list --provider ollama                     //確認模型
 
 openclaw devices approve 104a56fb-0ab8-4542-8610-f94a26f96468  //允許授權
 openclaw nodes approve 5f76ddbb-fda7-4950-b990-85ff7c54d4fa    //允許授權
