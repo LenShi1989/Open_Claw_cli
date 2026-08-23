@@ -21,6 +21,7 @@ openclaw --version                //查看 OpenClaw 版本
 openclaw --help                   //查看說明
 openclaw config                   //設定參數
 openclaw status                   //查看目前 OpenClaw 狀態
+openclaw gateway install          //安裝 Gateway
 openclaw gateway status           //查看 Gateway 狀態
 openclaw gateway start            //啟動 Gateway
 openclaw gateway stop             //停止 Gateway
@@ -40,12 +41,15 @@ openclaw devices list             //查看那些回應授權
 openclaw nodes pending            //查看 nodes 暫停的檔案
 openclaw skills list --verbose    //查看skills清單
 openclaw skills check             //確認skills
+openclaw models list              //查看現在的AI模型
+openclaw models status            //查看AI模型狀態
 
-
+openclaw models list --provider ollama     //查看 Ollama 
+openclaw models set ollama/qwen3.5:9b      //設定主要模型
+openclaw models list --provider ollama     //確認模型
 
 openclaw devices approve 104a56fb-0ab8-4542-8610-f94a26f96468  //允許授權
 openclaw nodes approve 5f76ddbb-fda7-4950-b990-85ff7c54d4fa    //允許授權
-
 
 //設定timeout
 openclaw config set models.providers.ollama.timeoutSeconds 600
