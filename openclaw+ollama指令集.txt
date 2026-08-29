@@ -51,6 +51,8 @@ openclaw config validate                                   //驗證設定
 openclaw models list --provider ollama                     //查看 Ollama 
 openclaw models set ollama/qwen3.5:9b                      //設定主要模型
 openclaw models list --provider ollama                     //確認模型
+openclaw models fallbacks add ollama/gemma4                //將模型加入備用 
+
 
 openclaw devices approve 104a56fb-0ab8-4542-8610-f94a26f96468  //允許授權
 openclaw nodes approve 5f76ddbb-fda7-4950-b990-85ff7c54d4fa    //允許授權
