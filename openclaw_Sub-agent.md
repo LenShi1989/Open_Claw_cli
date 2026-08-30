@@ -261,7 +261,7 @@ openclaw agents add research --model google/gemini-2.5-pro
       Sonnet
           │            │            │
           └────────────┼────────────┘
-                       ↓
+          | `             ↓
                  📝 Reviewer
                  Claude Opus
 ```
@@ -269,3 +269,43 @@ openclaw agents add research --model google/gemini-2.5-pro
 這樣就不是單純「開幾個 ChatGPT」，而是變成一個 AI Agent Team。
 
 而且 OpenClaw 官方也特別建議：主 Agent 使用高品質模型，Sub-agent 使用較便宜的模型處理大量、重複性工作，可以降低 token 成本。
+
+---
+
+# sub agent 指令
+
+```sh
+openclaw agents add len           # 新增一個 len Aget
+openclaw agents bind              # 為代理程式新增路由綁定
+openclaw agents bindings          # 列出路由綁定
+openclaw agents delete len        # 刪除 len Aget
+openclaw agents list              # 列出已設定的代理
+openclaw agents set-identity      # 更新代理身份（名稱/主題/表情/頭像）
+openclaw agents unbind            # 移除代理程式的路由綁定
+openclaw agents add coding --workspace "路徑"   # 指定workspace
+```
+
+---
+
+# 建立 Agent + 指定 Model
+
+```sh
+openclaw agents add coder `
+  --workspace "C:\Users\admin\Documents\1.Gitlab\benton_system" `
+  --model "ollama/qwen3:30b"
+```
+
+---
+
+# opclaw tui /指令
+
+```sh
+/subagents list                                                    # 查看目前有哪些 Subagent 正在執行
+/subagents log <id\|#> [limit] [tools]                             # 查看指定 Subagent 的執行紀錄
+/subagents info <id\|#>                                            # 查看指定 Subagent 的詳細狀態
+/focus <subagent-label\|session-key\|session-id\|session-label>    # 將目前操作切換到指定 Subagent
+/unfocus                                                           # 回到原本的主 Agent
+/agents                                                            # 查看目前 Agent / 子代理狀態
+/session idle <duration\|off>                                      # 設定 Session 閒置多久後處理/停止
+/session max-age <duration\|off>                                   # 限制 Session 最長可以執行多久
+```

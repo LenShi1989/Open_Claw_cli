@@ -83,6 +83,8 @@ openclaw config set models.providers.ollama.timeoutSeconds 600
 /config     //查看設定                      
 /quit       //離開目前 Agent                
 /exit       //離開 Agent                    
+/agents     //切換子 Agent
+
 
 //--------------------------------------------------------------
 
