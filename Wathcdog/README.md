@@ -1,3 +1,14 @@
+# python 啟動進入虛擬環境
+
+```sh
+py -0p                                                 //查看電腦裡Python所有版本
+py -3.12 -m venv venv312                               //現有的 Python 版本Python 3.12建立環境
+venv312\Scripts\activate                               //啟動虛擬環境 Windows（cmd）
+python -m pip install --upgrade pip                    //升級pip
+deactivate                                             //關閉虛擬環境
+pip install -r requirements.txt                        //安裝txt裡面的所有套件
+```
+
 # 剛開始啟動
 
 ```sh
