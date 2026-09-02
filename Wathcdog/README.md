@@ -14,6 +14,7 @@ pip install -r requirements.txt                        //安裝txt裡面的所�
 ```sh
 py .\openclaw_ollama_watchdog_v3.py --dry-run
 py .\openclaw_ollama_watchdog_v3_1.py --dry-run
+py .\openclaw_ollama_watchdog_v4.py --dry-run
 ```
 
 # 啟動python程式
@@ -21,6 +22,7 @@ py .\openclaw_ollama_watchdog_v3_1.py --dry-run
 ```sh
 py .\openclaw_ollama_watchdog_v3.py
 py .\openclaw_ollama_watchdog_v3_1.py
+py .\openclaw_ollama_watchdog_v4.py
 ```
 
 # Recovery 失敗才 Restart Gateway
