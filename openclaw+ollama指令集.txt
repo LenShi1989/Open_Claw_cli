@@ -2,14 +2,14 @@
 
 //安裝 Ollama
 irm https://ollama.com/install.ps1 | iex
-ollama --version                               //確認 Ollama 版本
-ollama list                                    //查看模型清單
-curl http://localhost:11434/api/tags           //測試 Ollama API
-curl.exe http://192.168.10.131:11436/api/ps    //測試查看實際session內容
-ollama pull qwen3.5:9b                         //下載AI模型
-ollama run qwen3.5:9b                          //執行測試模型
-$env:OLLAMA_CONTEXT_LENGTH="65536"             //設定ollama context長度
-docker exec -it ollama                         //docker 指令前綴
+ollama --version                             # 確認 Ollama 版本
+ollama list                                  # 查看模型清單
+curl http://localhost:11434/api/tags         # 測試 Ollama API
+curl.exe http://192.168.10.131:11436/api/ps  # 測試查看實際session內容
+ollama pull qwen3.5:9b                       # 下載AI模型
+ollama run qwen3.5:9b                        # 執行測試模型
+$env:OLLAMA_CONTEXT_LENGTH="65536"           # 設定ollama context長度
+docker exec -it ollama                       # docker 指令前綴
 
 //--------------------------------------------------------------
 
@@ -18,45 +18,201 @@ docker exec -it ollama                         //docker 指令前綴
 //安裝 OpenClaw
 iwr -useb https://openclaw.ai/install.ps1 | iex  
 
-openclaw --version                //查看 OpenClaw 版本
-openclaw --help                   //查看說明
-openclaw config                   //設定參數
-openclaw status                   //查看目前 OpenClaw 狀態
-openclaw gateway install          //安裝 Gateway
-openclaw gateway status           //查看 Gateway 狀態
-openclaw gateway start            //啟動 Gateway
-openclaw gateway stop             //停止 Gateway
-openclaw gateway restart          //重啟 Gateway
-openclaw update                   //更新 OpenClaw 
-openclaw agents add coding        //建立sub-agent, name為coding
-openclaw doctor                   //檢查／診斷問題
-openclaw logs --follow            //檢查及時log
-openclaw config validate          //驗證設定檔
-openclaw node status              //確認 Node Host 狀態
-openclaw node install             //安裝 Node Host
-openclaw node start               //啟動 Node Host
-openclaw node restart             //重啟 Node Host
-openclaw nodes list               //檢查 Gateway 是否看到 Node
-openclaw nodes status             //檢查 Gateway 是否看到 Node
-openclaw devices list             //查看那些回應授權  
-openclaw nodes pending            //查看 nodes 暫停的檔案
-openclaw skills list --verbose    //查看skills清單
-openclaw skills check             //確認skills
-openclaw models list              //查看現在的AI模型
-openclaw models status            //查看AI模型狀態
+openclaw --version                  # 查看 OpenClaw 版本              
+openclaw --help                     # 查看所有 CLI 指令               
+openclaw status                     # 查看 OpenClaw 整體狀態          
+openclaw status --json              # 以 JSON 顯示狀態，適合 Watchdog  
+openclaw health                     # 健康檢查                        
+openclaw doctor                     # 診斷並修復常見問題               
+openclaw dashboard                  # 開啟 Web Dashboard              
+openclaw tui                        # 開啟終端機 TUI                   
 
-openclaw config get agents.defaults.workspace              //查看目前工作區
-openclaw config set agents.defaults.workspace "路徑"       //設定工作路徑
-openclaw setup --workspace "路徑"                          //初始化工作區
-openclaw config validate                                   //驗證設定
-openclaw models list --provider ollama                     //查看 Ollama 
-openclaw models set ollama/qwen3.5:9b                      //設定主要模型
-openclaw models list --provider ollama                     //確認模型
-openclaw models fallbacks add ollama/gemma4                //將模型加入備用 
+openclaw config                     # 開啟互動式設定    
+openclaw config get <path>          # 讀取設定          
+openclaw config set <path> <value>  # 修改設定          
+openclaw config unset <path>        # 移除設定          
+openclaw config patch               # 批次修改設定      
+openclaw config file                # 顯示設定檔位置    
+openclaw config schema              # 查看設定 Schema   
+openclaw config validate            # 驗證設定          
+openclaw config validate --json     # JSON 格式驗證     
+
+openclaw gateway install            # 安裝 Gateway
+openclaw gateway status             # 查看 Gateway 狀態
+openclaw gateway health             # Gateway 健康檢查 
+openclaw gateway start              # 啟動 Gateway
+openclaw gateway stop               # 停止 Gateway
+openclaw gateway restart            # 重啟 Gateway
+openclaw gateway run                # 前景執行 Gateway   
+openclaw gateway probe              # 探測 Gateway    
+
+openclaw logs                       # 查看 Log             
+openclaw logs --follow              # 即時追蹤             
+openclaw logs --json                # JSON Log             
+openclaw logs --follow --json       # **Watchdog 最適合**  
 
 
-openclaw devices approve 104a56fb-0ab8-4542-8610-f94a26f96468  //允許授權
-openclaw nodes approve 5f76ddbb-fda7-4950-b990-85ff7c54d4fa    //允許授權
+
+openclaw agent                      # 執行 Agent        
+openclaw agents list                # **列出 Agent**    
+openclaw agents add                 # 新增 Agent        
+openclaw agents delete              # 刪除 Agent        
+openclaw agents bindings            # 查看綁定          
+openclaw agents bind                # 綁定 Agent        
+openclaw agents unbind              # 解除綁定          
+openclaw agents set-identity        # 設定 Agent 身份   
+
+
+
+openclaw models list                # 列出模型          
+openclaw models status              # 查看目前模型狀態  
+openclaw models set                 # 設定預設模型      
+openclaw models scan                # 掃描模型          
+openclaw models fallbacks list      # 查看 fallback     
+openclaw models fallbacks add       # 新增 fallback     
+openclaw models fallbacks remove    # 移除 fallback     
+openclaw models fallbacks clear     # 清除 fallback     
+openclaw models auth list           # 查看模型認證      
+openclaw models auth add            # 加入 API 認證     
+
+
+
+| `openclaw nodes status`   | Node 狀態      |
+| `openclaw nodes list`     | Node 清單      |
+| `openclaw nodes describe` | Node 詳細資訊  |
+| `openclaw nodes pending`  | 待配對 Node    |
+| `openclaw nodes approve`  | 核准 Node      |
+| `openclaw nodes reject`   | 拒絕 Node      |
+| `openclaw nodes rename`   | 修改名稱       |
+| `openclaw nodes invoke`   | 呼叫 Node Tool |
+| `openclaw nodes notify`   | 發送通知       |
+| `openclaw nodes push`     | Push           |
+
+| `openclaw skills list`    | 列出 Skills    |
+| `openclaw skills search`  | 搜尋 Skill     |
+| `openclaw skills install` | 安裝 Skill     |
+| `openclaw skills update`  | 更新 Skill     |
+| `openclaw skills verify`  | 驗證 Skill     |
+| `openclaw skills info`    | Skill 詳細資訊 |
+
+| `openclaw plugins list`      | 列出 Plugins |
+| `openclaw plugins search`    | 搜尋 Plugin  |
+| `openclaw plugins inspect`   | 查看 Plugin  |
+| `openclaw plugins install`   | 安裝         |
+| `openclaw plugins uninstall` | 移除         |
+| `openclaw plugins update`    | 更新         |
+| `openclaw plugins enable`    | 啟用         |
+| `openclaw plugins disable`   | 停用         |
+| `openclaw plugins doctor`    | Plugin 診斷  |
+
+| `openclaw browser status`     | Browser 狀態    |
+| `openclaw browser start`      | 啟動            |
+| `openclaw browser stop`       | 停止            |
+| `openclaw browser tabs`       | 查看 Tabs       |
+| `openclaw browser open`       | 開啟網址        |
+| `openclaw browser navigate`   | 導航            |
+| `openclaw browser screenshot` | 截圖            |
+| `openclaw browser click`      | 點擊            |
+| `openclaw browser type`       | 輸入文字        |
+| `openclaw browser evaluate`   | 執行 JavaScript |
+
+| `openclaw cron status`  | 排程狀態 |
+| `openclaw cron list`    | 排程清單 |
+| `openclaw cron add`     | 新增排程 |
+| `openclaw cron edit`    | 修改     |
+| `openclaw cron rm`      | 刪除     |
+| `openclaw cron enable`  | 啟用     |
+| `openclaw cron disable` | 停用     |
+| `openclaw cron runs`    | 執行紀錄 |
+| `openclaw cron run`     | 立即執行 |
+
+| `openclaw memory status` | Memory 狀態   |
+| `openclaw memory index`  | 建立/更新索引 |
+| `openclaw memory search` | 搜尋 Memory   |
+
+| `openclaw channels list`         | Channel 清單 |
+| `openclaw channels status`       | Channel 狀態 |
+| `openclaw channels capabilities` | 支援能力     |
+| `openclaw channels add`          | 新增 Channel |
+| `openclaw channels remove`       | 移除         |
+| `openclaw channels login`        | 登入         |
+| `openclaw channels logout`       | 登出         |
+
+| `openclaw security audit` | 安全稽核         |
+| `openclaw secrets reload` | 重新載入 Secrets |
+| `openclaw secrets audit`  | Secrets 稽核     |
+| `openclaw approvals get`  | 查看權限         |
+| `openclaw approvals set`  | 設定權限         |
+
+| `openclaw backup create`  | 建立備份      |
+| `openclaw backup verify`  | 驗證備份      |
+| `openclaw backup restore` | 還原          |
+| `openclaw update`         | 更新 OpenClaw |
+| `openclaw update status`  | 更新狀態      |
+| `openclaw update repair`  | 修復更新      |
+| `openclaw reset`          | 重置          |
+| `openclaw uninstall`      | 移除 OpenClaw |
+
+| `openclaw node status`    | 本機 Node 狀態    |
+| `openclaw node run`       | 執行 Node         |
+| `openclaw node install`   | 安裝 Node Service |
+| `openclaw node uninstall` | 移除              |
+| `openclaw node stop`      | 停止              |
+| `openclaw node restart`   | 重啟              |
+
+| `openclaw message send`      | 發送訊息 |
+| `openclaw message broadcast` | 廣播     |
+| `openclaw message poll`      | 投票     |
+| `openclaw message react`     | Reaction |
+| `openclaw message read`      | 讀取訊息 |
+| `openclaw message search`    | 搜尋訊息 |
+
+
+
+
+
+
+
+
+
+openclaw update                  # 更新 OpenClaw 
+openclaw agents add coding       # 建立sub-agent, name為coding
+
+
+
+
+
+
+
+
+
+openclaw logs --follow           # 檢查及時log
+openclaw config validate         # 驗證設定檔
+openclaw node status             # 確認 Node Host 狀態
+openclaw node install            # 安裝 Node Host
+openclaw node start              # 啟動 Node Host
+openclaw node restart            # 重啟 Node Host
+openclaw nodes list              # 檢查 Gateway 是否看到 Node
+openclaw nodes status            # 檢查 Gateway 是否看到 Node
+openclaw devices list            # 查看那些回應授權  
+openclaw nodes pending           # 查看 nodes 暫停的檔案
+openclaw skills list --verbose   # 查看skills清單
+openclaw skills check            # 確認skills
+openclaw models list             # 查看現在的AI模型
+openclaw models status           # 查看AI模型狀態
+
+openclaw config get agents.defaults.workspace             # 查看目前工作區
+openclaw config set agents.defaults.workspace "路徑"      # 設定工作路徑
+openclaw setup --workspace "路徑"                         # 初始化工作區
+openclaw config validate                                  # 驗證設定
+openclaw models list --provider ollama                    # 查看 Ollama 
+openclaw models set ollama/qwen3.5:9b                     # 設定主要模型
+openclaw models list --provider ollama                    # 確認模型
+openclaw models fallbacks add ollama/gemma4               # 將模型加入備用 
+
+
+openclaw devices approve 104a56fb-0ab8-4542-8610-f94a26f96468 # 允許授權
+openclaw nodes approve 5f76ddbb-fda7-4950-b990-85ff7c54d4fa   # 允許授權
 
 //設定timeout
 openclaw config set models.providers.ollama.timeoutSeconds 600
@@ -64,27 +220,27 @@ openclaw config set models.providers.ollama.timeoutSeconds 600
 //--------------------------------------------------------------
 
 //**openclaw內部指令**//
-/help       //顯示可用指令              
-/status     //查看目前 Agent / Session 狀態 
-/model      //查看或切換模型                
-/models     //查看可用模型                  
-/reset      //重置目前 Session              
-/clear      //清除目前對話內容              
-/new        //建立新的 Session              
-/sessions   //查看 Session                  
-/session    //查看目前 Session 資訊         
-/compact    //壓縮目前 Context              
-/context    //查看 Context 使用狀況         
-/usage      //查看 Token / 使用量           
-/think      //調整思考模式                  
-/verbose    //開／關詳細輸出                
-/debug      //開／關 Debug 資訊             
-/tools      //查看可用 Tools                
-/skills     //查看可用 Skills               
-/config     //查看設定                      
-/quit       //離開目前 Agent                
-/exit       //離開 Agent                    
-/agents     //切換子 Agent
+/help      # 顯示可用指令              
+/status    # 查看目前 Agent / Session 狀態 
+/model     # 查看或切換模型                
+/models    # 查看可用模型                  
+/reset     # 重置目前 Session              
+/clear     # 清除目前對話內容              
+/new       # 建立新的 Session              
+/sessions  # 查看 Session                  
+/session   # 查看目前 Session 資訊         
+/compact   # 壓縮目前 Context              
+/context   # 查看 Context 使用狀況         
+/usage     # 查看 Token / 使用量           
+/think     # 調整思考模式                  
+/verbose   # 開／關詳細輸出                
+/debug     # 開／關 Debug 資訊             
+/tools     # 查看可用 Tools                
+/skills    # 查看可用 Skills               
+/config    # 查看設定                      
+/quit      # 離開目前 Agent                
+/exit      # 離開 Agent                    
+/agents    # 切換子 Agent
 
 
 //--------------------------------------------------------------
@@ -94,6 +250,6 @@ openclaw config set models.providers.ollama.timeoutSeconds 600
 cd "C:\Users\user\.openclaw\openclaw.json"
 調整 openclaw.json
 
-"contextWindow":32768      //調整約為33k
-"num_ctx":32768            //調整約為33k
+"contextWindow":32768     # 調整約為33k
+"num_ctx":32768           # 調整約為33k
 
