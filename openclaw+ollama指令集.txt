@@ -71,6 +71,7 @@ openclaw agents bindings            # 查看綁定
 openclaw agents bind                # 綁定 Agent        
 openclaw agents unbind              # 解除綁定          
 openclaw agents set-identity        # 設定 Agent 身份   
+openclaw tui --session "agent:len:$(Get-Date -Format 'yyyyMMdd-HHmmss')"   # 使用agent len 開session
 
 openclaw models list                # 列出模型          
 openclaw models status              # 查看目前模型狀態  
