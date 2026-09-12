@@ -25,7 +25,16 @@ openclaw status --json              # 以 JSON 顯示狀態，適合 Watchdog
 openclaw health                     # 健康檢查                        
 openclaw doctor                     # 診斷並修復常見問題               
 openclaw dashboard                  # 開啟 Web Dashboard              
-openclaw tui                        # 開啟終端機 TUI                   
+openclaw tui                        # 開啟終端機 TUI     
+openclaw tui agent:main:main        # 啟動預設 main Agent      
+
+# 設定快捷指令
+function open-len { openclaw tui --session "agent:len:$(Get-Date -Format 'yyyyMMdd-HHmmss')" }
+
+# 使用agent len 開session
+openclaw tui --session "agent:len:$(Get-Date -Format 'yyyyMMdd-HHmmss')"   
+
+
 
 openclaw config                     # 開啟互動式設定    
 openclaw config get <path>          # 讀取設定          
@@ -71,7 +80,6 @@ openclaw agents bindings            # 查看綁定
 openclaw agents bind                # 綁定 Agent        
 openclaw agents unbind              # 解除綁定          
 openclaw agents set-identity        # 設定 Agent 身份   
-openclaw tui --session "agent:len:$(Get-Date -Format 'yyyyMMdd-HHmmss')"   # 使用agent len 開session
 
 openclaw models list                # 列出模型          
 openclaw models status              # 查看目前模型狀態  
