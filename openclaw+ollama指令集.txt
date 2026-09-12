@@ -37,6 +37,17 @@ openclaw config schema              # 查看設定 Schema
 openclaw config validate            # 驗證設定          
 openclaw config validate --json     # JSON 格式驗證     
 
+openclaw config get agents.defaults.workspace                                     # 查看預設 Workspace                      
+openclaw config get agents.entries.main.workspace                                 # 查看 `main` Agent Workspace             
+openclaw config get agents.entries                                                # 查看所有 Agent 設定                     
+openclaw config file                                                              # 查看目前使用的設定檔                    
+openclaw config set agents.defaults.workspace "D:\Gitlab\benton_system"           # 設定預設 Workspace                      
+openclaw config set agents.entries.main.workspace "D:\Gitlab\benton_system"       # **把 main Agent 切換到指定 Workspace**  
+openclaw config set agents.entries.len.workspace "D:\Gitlab\benton_system\len"    # 把 `len` Agent 切換到指定 Workspace     
+openclaw config unset agents.entries.main.workspace                               # 移除 main 的獨立 Workspace 設定         
+openclaw agents list                                                              # 確認 Agent 與 Workspace                 
+openclaw gateway restart                                                          # 修改後重新啟動 Gateway                  
+
 openclaw gateway install            # 安裝 Gateway
 openclaw gateway status             # 查看 Gateway 狀態
 openclaw gateway health             # Gateway 健康檢查 
@@ -51,18 +62,15 @@ openclaw logs --follow              # 即時追蹤
 openclaw logs --json                # JSON Log             
 openclaw logs --follow --json       # **Watchdog 最適合**  
 
-
-
 openclaw agent                      # 執行 Agent        
 openclaw agents list                # **列出 Agent**    
 openclaw agents add                 # 新增 Agent        
+openclaw agents add coding          # 建立sub-agent, name為coding
 openclaw agents delete              # 刪除 Agent        
 openclaw agents bindings            # 查看綁定          
 openclaw agents bind                # 綁定 Agent        
 openclaw agents unbind              # 解除綁定          
 openclaw agents set-identity        # 設定 Agent 身份   
-
-
 
 openclaw models list                # 列出模型          
 openclaw models status              # 查看目前模型狀態  
@@ -75,125 +83,103 @@ openclaw models fallbacks clear     # 清除 fallback
 openclaw models auth list           # 查看模型認證      
 openclaw models auth add            # 加入 API 認證     
 
+openclaw nodes status               # Node 狀態        
+openclaw nodes list                 # Node 清單        
+openclaw nodes describe             # Node 詳細資訊    
+openclaw nodes pending              # 待配對 Node      
+openclaw nodes approve              # 核准 Node        
+openclaw nodes reject               # 拒絕 Node        
+openclaw nodes rename               # 修改名稱         
+openclaw nodes invoke               # 呼叫 Node Tool   
+openclaw nodes notify               # 發送通知         
+openclaw nodes push                 # Push             
 
+openclaw skills list                # 列出 Skills     
+openclaw skills search              # 搜尋 Skill      
+openclaw skills install             # 安裝 Skill      
+openclaw skills update              # 更新 Skill      
+openclaw skills verify              # 驗證 Skill      
+openclaw skills info                # Skill 詳細資訊  
 
-| `openclaw nodes status`   | Node 狀態      |
-| `openclaw nodes list`     | Node 清單      |
-| `openclaw nodes describe` | Node 詳細資訊  |
-| `openclaw nodes pending`  | 待配對 Node    |
-| `openclaw nodes approve`  | 核准 Node      |
-| `openclaw nodes reject`   | 拒絕 Node      |
-| `openclaw nodes rename`   | 修改名稱       |
-| `openclaw nodes invoke`   | 呼叫 Node Tool |
-| `openclaw nodes notify`   | 發送通知       |
-| `openclaw nodes push`     | Push           |
+openclaw plugins list               # 列出 Plugins 
+openclaw plugins search             # 搜尋 Plugin  
+openclaw plugins inspect            # 查看 Plugin  
+openclaw plugins install            # 安裝         
+openclaw plugins uninstall          # 移除         
+openclaw plugins update             # 更新         
+openclaw plugins enable             # 啟用         
+openclaw plugins disable            # 停用         
+openclaw plugins doctor             # Plugin 診斷  
 
-| `openclaw skills list`    | 列出 Skills    |
-| `openclaw skills search`  | 搜尋 Skill     |
-| `openclaw skills install` | 安裝 Skill     |
-| `openclaw skills update`  | 更新 Skill     |
-| `openclaw skills verify`  | 驗證 Skill     |
-| `openclaw skills info`    | Skill 詳細資訊 |
+openclaw browser status             # Browser 狀態    
+openclaw browser start              # 啟動            
+openclaw browser stop               # 停止            
+openclaw browser tabs               # 查看 Tabs       
+openclaw browser open               # 開啟網址        
+openclaw browser navigate           # 導航            
+openclaw browser screenshot         # 截圖            
+openclaw browser click              # 點擊            
+openclaw browser type               # 輸入文字        
+openclaw browser evaluate           # 執行 JavaScript 
 
-| `openclaw plugins list`      | 列出 Plugins |
-| `openclaw plugins search`    | 搜尋 Plugin  |
-| `openclaw plugins inspect`   | 查看 Plugin  |
-| `openclaw plugins install`   | 安裝         |
-| `openclaw plugins uninstall` | 移除         |
-| `openclaw plugins update`    | 更新         |
-| `openclaw plugins enable`    | 啟用         |
-| `openclaw plugins disable`   | 停用         |
-| `openclaw plugins doctor`    | Plugin 診斷  |
+openclaw cron status                # 排程狀態 
+openclaw cron list                  # 排程清單 
+openclaw cron add                   # 新增排程 
+openclaw cron edit                  # 修改     
+openclaw cron rm                    # 刪除     
+openclaw cron enable                # 啟用     
+openclaw cron disable               # 停用     
+openclaw cron runs                  # 執行紀錄 
+openclaw cron run                   # 立即執行 
 
-| `openclaw browser status`     | Browser 狀態    |
-| `openclaw browser start`      | 啟動            |
-| `openclaw browser stop`       | 停止            |
-| `openclaw browser tabs`       | 查看 Tabs       |
-| `openclaw browser open`       | 開啟網址        |
-| `openclaw browser navigate`   | 導航            |
-| `openclaw browser screenshot` | 截圖            |
-| `openclaw browser click`      | 點擊            |
-| `openclaw browser type`       | 輸入文字        |
-| `openclaw browser evaluate`   | 執行 JavaScript |
+openclaw memory status              # Memory 狀態   
+openclaw memory index               # 建立/更新索引 
+openclaw memory search              # 搜尋 Memory   
 
-| `openclaw cron status`  | 排程狀態 |
-| `openclaw cron list`    | 排程清單 |
-| `openclaw cron add`     | 新增排程 |
-| `openclaw cron edit`    | 修改     |
-| `openclaw cron rm`      | 刪除     |
-| `openclaw cron enable`  | 啟用     |
-| `openclaw cron disable` | 停用     |
-| `openclaw cron runs`    | 執行紀錄 |
-| `openclaw cron run`     | 立即執行 |
+openclaw channels list              # Channel 清單 
+openclaw channels status            # Channel 狀態 
+openclaw channels capabilities      # 支援能力     
+openclaw channels add               # 新增 Channel 
+openclaw channels remove            # 移除         
+openclaw channels login             # 登入         
+openclaw channels logout            # 登出         
 
-| `openclaw memory status` | Memory 狀態   |
-| `openclaw memory index`  | 建立/更新索引 |
-| `openclaw memory search` | 搜尋 Memory   |
+openclaw security audit             # 安全稽核         
+openclaw secrets reload             # 重新載入 Secrets 
+openclaw secrets audit              # Secrets 稽核     
+openclaw approvals get              # 查看權限         
+openclaw approvals set              # 設定權限         
 
-| `openclaw channels list`         | Channel 清單 |
-| `openclaw channels status`       | Channel 狀態 |
-| `openclaw channels capabilities` | 支援能力     |
-| `openclaw channels add`          | 新增 Channel |
-| `openclaw channels remove`       | 移除         |
-| `openclaw channels login`        | 登入         |
-| `openclaw channels logout`       | 登出         |
+openclaw backup create              # 建立備份       
+openclaw backup verify              # 驗證備份       
+openclaw backup restore             # 還原           
+openclaw update                     # 更新 OpenClaw  
+openclaw update status              # 更新狀態       
+openclaw update repair              # 修復更新       
+openclaw reset                      # 重置           
+openclaw uninstall                  # 移除 OpenClaw  
 
-| `openclaw security audit` | 安全稽核         |
-| `openclaw secrets reload` | 重新載入 Secrets |
-| `openclaw secrets audit`  | Secrets 稽核     |
-| `openclaw approvals get`  | 查看權限         |
-| `openclaw approvals set`  | 設定權限         |
+openclaw node status                # 本機 Node 狀態    
+openclaw node run                   # 執行 Node         
+openclaw node install               # 安裝 Node Service 
+openclaw node uninstall             # 移除              
+openclaw node stop                  # 停止              
+openclaw node restart               # 重啟              
 
-| `openclaw backup create`  | 建立備份      |
-| `openclaw backup verify`  | 驗證備份      |
-| `openclaw backup restore` | 還原          |
-| `openclaw update`         | 更新 OpenClaw |
-| `openclaw update status`  | 更新狀態      |
-| `openclaw update repair`  | 修復更新      |
-| `openclaw reset`          | 重置          |
-| `openclaw uninstall`      | 移除 OpenClaw |
+openclaw message send               # 發送訊息   
+openclaw message broadcast          # 廣播       
+openclaw message poll               # 投票       
+openclaw message react              # Reaction   
+openclaw message read               # 讀取訊息   
+openclaw message search             # 搜尋訊息   
 
-| `openclaw node status`    | 本機 Node 狀態    |
-| `openclaw node run`       | 執行 Node         |
-| `openclaw node install`   | 安裝 Node Service |
-| `openclaw node uninstall` | 移除              |
-| `openclaw node stop`      | 停止              |
-| `openclaw node restart`   | 重啟              |
-
-| `openclaw message send`      | 發送訊息 |
-| `openclaw message broadcast` | 廣播     |
-| `openclaw message poll`      | 投票     |
-| `openclaw message react`     | Reaction |
-| `openclaw message read`      | 讀取訊息 |
-| `openclaw message search`    | 搜尋訊息 |
-
-
-
-
-
-
-
-
-
-openclaw update                  # 更新 OpenClaw 
-openclaw agents add coding       # 建立sub-agent, name為coding
-
-
-
-
-
-
-
-
-
-openclaw logs --follow           # 檢查及時log
-openclaw config validate         # 驗證設定檔
 openclaw node status             # 確認 Node Host 狀態
 openclaw node install            # 安裝 Node Host
 openclaw node start              # 啟動 Node Host
 openclaw node restart            # 重啟 Node Host
 openclaw nodes list              # 檢查 Gateway 是否看到 Node
 openclaw nodes status            # 檢查 Gateway 是否看到 Node
+
 openclaw devices list            # 查看那些回應授權  
 openclaw nodes pending           # 查看 nodes 暫停的檔案
 openclaw skills list --verbose   # 查看skills清單
