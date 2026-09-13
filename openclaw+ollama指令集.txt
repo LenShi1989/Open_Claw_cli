@@ -4,6 +4,7 @@
 irm https://ollama.com/install.ps1 | iex
 ollama --version                             # 確認 Ollama 版本
 ollama list                                  # 查看模型清單
+http://localhost:11434                       # 預設 api url
 curl http://localhost:11434/api/tags         # 測試 Ollama API
 curl.exe http://192.168.10.131:11436/api/ps  # 測試查看實際session內容
 ollama pull qwen3.5:9b                       # 下載AI模型
