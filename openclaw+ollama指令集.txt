@@ -176,6 +176,9 @@ openclaw node uninstall             # 移除
 openclaw node stop                  # 停止              
 openclaw node restart               # 重啟              
 
+openclaw nodes list                 # 檢查 Gateway 是否看到 Node
+openclaw nodes status               # 檢查 Gateway 是否看到 Node
+
 openclaw message send               # 發送訊息   
 openclaw message broadcast          # 廣播       
 openclaw message poll               # 投票       
@@ -183,19 +186,12 @@ openclaw message react              # Reaction
 openclaw message read               # 讀取訊息   
 openclaw message search             # 搜尋訊息   
 
-openclaw node status             # 確認 Node Host 狀態
-openclaw node install            # 安裝 Node Host
-openclaw node start              # 啟動 Node Host
-openclaw node restart            # 重啟 Node Host
-openclaw nodes list              # 檢查 Gateway 是否看到 Node
-openclaw nodes status            # 檢查 Gateway 是否看到 Node
-
-openclaw devices list            # 查看那些回應授權  
-openclaw nodes pending           # 查看 nodes 暫停的檔案
-openclaw skills list --verbose   # 查看skills清單
-openclaw skills check            # 確認skills
-openclaw models list             # 查看現在的AI模型
-openclaw models status           # 查看AI模型狀態
+openclaw devices list               # 查看那些回應授權  
+openclaw nodes pending              # 查看 nodes 暫停的檔案
+openclaw skills list --verbose      # 查看skills清單
+openclaw skills check               # 確認skills
+openclaw models list                # 查看現在的AI模型
+openclaw models status              # 查看AI模型狀態
 
 openclaw config get agents.defaults.workspace             # 查看目前工作區
 openclaw config set agents.defaults.workspace "路徑"      # 設定工作路徑
