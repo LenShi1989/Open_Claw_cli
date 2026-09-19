@@ -193,6 +193,36 @@ openclaw message react              # Reaction
 openclaw message read               # 讀取訊息   
 openclaw message search             # 搜尋訊息   
 
+openclaw mcp list                   # 列出已設定 MCP Server               
+openclaw mcp show                   # 查看 MCP 設定                      
+openclaw mcp show <name>            # 查看指定 MCP                       
+openclaw mcp status                 # 查看 MCP 狀態                      
+openclaw mcp status --verbose       # 查看詳細狀態                         
+openclaw mcp doctor                 # MCP 設定檢查                       
+openclaw mcp doctor <name>          # 檢查指定 MCP                       
+openclaw mcp doctor <name> --probe  # 檢查並實際連線                        
+openclaw mcp probe <name>           # 實際連線並檢查 MCP 能力                 
+openclaw mcp add <name>             # 新增 MCP Server                  
+openclaw mcp set <name> <json>      # 直接設定 MCP                       
+openclaw mcp configure <name>       # 修改 MCP 設定                      
+openclaw mcp tools <name>           # 管理 MCP Tool 篩選                 
+openclaw mcp login <name>           # OAuth 登入                       
+openclaw mcp logout <name>          # OAuth 登出                       
+openclaw mcp reload                 # 重新載入 MCP runtime               
+openclaw mcp unset <name>           # 移除 MCP Server              
+openclaw mcp serve                  # 讓 OpenClaw 本身成為 MCP Server 
+
+openclaw mcp list                                                             # 1. 查看
+openclaw mcp status --verbose                                                 # 2. 查看詳細狀態
+openclaw mcp set context7 '{\"command\":\"uvx\",\"args\":[\"context7-mcp\"]}  # 3. 新增 MCP
+openclaw mcp show context7                                                    # 4. 查看設定
+openclaw mcp doctor context7                                                  # 5. 檢查設定
+openclaw mcp probe context7                                                   # 6. 實際測試連線
+openclaw mcp tools context7                                                   # 7. 查看 MCP Tools
+openclaw mcp tools context7 --include "resolve-library-id,get-library-docs"   # 8. 限制 Tools
+openclaw mcp reload                                                           # 9. 重新載入
+openclaw mcp unset context7                                                   # 10. 移除
+
 openclaw devices list               # 查看那些回應授權  
 openclaw nodes pending              # 查看 nodes 暫停的檔案
 openclaw skills list --verbose      # 查看skills清單
