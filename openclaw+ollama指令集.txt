@@ -2,15 +2,22 @@
 
 //安裝 Ollama
 irm https://ollama.com/install.ps1 | iex
-ollama --version                             # 確認 Ollama 版本
-ollama list                                  # 查看模型清單
-http://localhost:11434                       # 預設 api url
-curl http://localhost:11434/api/tags         # 測試 Ollama API
-curl.exe http://192.168.10.131:11436/api/ps  # 測試查看實際session內容
-ollama pull qwen3.5:9b                       # 下載AI模型
-ollama run qwen3.5:9b                        # 執行測試模型
-$env:OLLAMA_CONTEXT_LENGTH="65536"           # 設定ollama context長度
-docker exec -it ollama                       # docker 指令前綴
+ollama --version                               # 確認 Ollama 版本
+ollama list                                    # 查看模型清單
+http://localhost:11434                         # 預設 api url
+curl http://localhost:11434/api/tags           # 測試 Ollama API
+curl.exe http://192.168.10.131:11436/api/ps    # 測試查看實際session內容
+ollama pull qwen3.5:9b                         # 下載AI模型
+ollama run qwen3.5:9b                          # 執行測試模型
+ollama ps                                      # 查看目前跑哪些模型
+ollama show qwen3.5:9b                         # 查看模型資訊
+ollama stop qwen3.5:9b                         # 停止模型
+ollama rm qwen3.5:9b                           # 刪除模型
+nvidia-smi                                     # 查看 NVIDIA GPU
+nvidia-smi -l 1                                # 持續監控 GPU
+
+$env:OLLAMA_CONTEXT_LENGTH="65536"             # 設定ollama context長度
+docker exec -it ollama                         # docker 指令前綴
 
 //--------------------------------------------------------------
 
