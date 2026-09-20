@@ -212,16 +212,16 @@ openclaw mcp reload                 # 重新載入 MCP runtime
 openclaw mcp unset <name>           # 移除 MCP Server              
 openclaw mcp serve                  # 讓 OpenClaw 本身成為 MCP Server 
 
-openclaw mcp list                                                             # 1. 查看
-openclaw mcp status --verbose                                                 # 2. 查看詳細狀態
-openclaw mcp set context7 '{\"command\":\"uvx\",\"args\":[\"context7-mcp\"]}  # 3. 新增 MCP
-openclaw mcp show context7                                                    # 4. 查看設定
-openclaw mcp doctor context7                                                  # 5. 檢查設定
-openclaw mcp probe context7                                                   # 6. 實際測試連線
-openclaw mcp tools context7                                                   # 7. 查看 MCP Tools
-openclaw mcp tools context7 --include "resolve-library-id,get-library-docs"   # 8. 限制 Tools
-openclaw mcp reload                                                           # 9. 重新載入
-openclaw mcp unset context7                                                   # 10. 移除
+openclaw mcp list                                                               # 1. 查看
+openclaw mcp status --verbose                                                   # 2. 查看詳細狀態
+openclaw mcp set context7 '{\"command\":\"uvx\",\"args\":[\"context7-mcp\"]}'   # 3. 新增 MCP
+openclaw mcp show context7                                                      # 4. 查看設定
+openclaw mcp doctor context7                                                    # 5. 檢查設定
+openclaw mcp probe context7                                                     # 6. 實際測試連線
+openclaw mcp tools context7                                                     # 7. 查看 MCP Tools
+openclaw mcp tools context7 --include "resolve-library-id,get-library-docs"     # 8. 限制 Tools
+openclaw mcp reload                                                             # 9. 重新載入
+openclaw mcp unset context7                                                     # 10. 移除
 
 openclaw devices list               # 查看那些回應授權  
 openclaw nodes pending              # 查看 nodes 暫停的檔案
