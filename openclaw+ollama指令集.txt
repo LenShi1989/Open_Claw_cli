@@ -282,3 +282,39 @@ cd "C:\Users\user\.openclaw\openclaw.json"
 "contextWindow":32768     # 調整約為33k
 "num_ctx":32768           # 調整約為33k
 
+//--------------------------------------------------------------
+//**Openclaw 錯誤處理**//
+
+# 清除指定 Session 的歷史紀錄 (將 <session_id> 替換為你的 session ID)
+openclaw session delete <session_id>
+
+# 或者重置/清除當前 main session 的狀態與對話歷史
+openclaw session reset
+
+# 進入 OpenClaw 配置與資料目錄
+Set-Location "$env:USERPROFILE\.openclaw"
+
+# 刪除 Sessions 對話歷史紀錄與暫存
+Remove-Item -Path ".\sessions" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path ".\agents" -Recurse -Force -ErrorAction SilentlyContinue
+
+# 刪除向量記憶庫 (Vector Index & Memory Cache)
+Remove-Item -Path ".\memory" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path ".\*.db" -Force -ErrorAction SilentlyContinue
+Remove-Item -Path ".\*.sqlite" -Force -ErrorAction SilentlyContinue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
