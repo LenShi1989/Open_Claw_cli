@@ -26,7 +26,8 @@ docker exec -it ollama                         # docker 指令前綴
 //安裝 OpenClaw
 iwr -useb https://openclaw.ai/install.ps1 | iex  
 
-openclaw --version                  # 查看 OpenClaw 版本              
+openclaw --version                  # 查看 OpenClaw 版本  
+openclaw update                     # 更新 OpenClaw          
 openclaw --help                     # 查看所有 CLI 指令               
 openclaw status                     # 查看 OpenClaw 整體狀態          
 openclaw status --json              # 以 JSON 顯示狀態，適合 Watchdog  
